@@ -289,3 +289,33 @@ h2 { margin-bottom: 0; font-size: clamp(34px, 4vw, 51px); font-weight: 600; lett
   *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; transition-duration: .01ms !important; }
   .reveal { opacity: 1; transform: none; }
 }
+
+.public-account-dashboard {
+  color: var(--white);
+  background: var(--green-dark);
+  box-shadow: var(--shadow);
+}
+.public-account-dashboard .account-dashboard-heading,
+.public-account-dashboard .account-dashboard-actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+.public-account-dashboard .account-dashboard-heading .eyebrow { margin-bottom: 8px; color: var(--lime); }
+.public-account-dashboard .account-dashboard-heading h2 { font-size: clamp(26px, 3vw, 36px); }
+.public-account-dashboard .account-welcome { margin: 12px 0 0; color: #c1d0c4; font-size: 12px; }
+.public-account-dashboard .auth-dashboard-stats > div { background: #ffffff10; }
+.public-account-dashboard .auth-dashboard-lists h3 { color: var(--white); }
+.public-account-dashboard .auth-dashboard-lists li { background: #ffffff10; }
+.public-account-dashboard .auth-sync-status { color: #c1d0c4; }
+.primary-nav .auth-trigger { margin: 0; }
+
+@media (max-width: 900px) {
+  .primary-nav .auth-trigger { margin-top: 14px; }
+}
+@media (max-width: 600px) {
+  .public-account-dashboard .account-dashboard-heading { align-items: flex-start; flex-direction: column; }
+  .public-account-dashboard .account-dashboard-actions { flex-wrap: wrap; justify-content: flex-start; }
+  .public-account-dashboard .account-dashboard-stats > div { padding: 11px; }
+}

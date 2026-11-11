@@ -8,6 +8,7 @@
   <title>Cantera — Escuela de Fútbol</title>
   <link rel="preconnect" href="https://images.unsplash.com">
   <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="auth.css">
   <script src="script.js" defer></script>
 </head>
 <body>
@@ -32,6 +33,9 @@
         <a href="#programas">Programas</a>
         <a href="#galeria">En la cancha</a>
         <a href="#contacto">Contacto</a>
+        <a href="mundial.html">Campeonato</a>
+        <button class="auth-trigger" type="button" data-auth-open>Iniciar sesión</button>
+        <a class="button button-dark nav-cta" href="mundial.html" data-signed-in hidden>Jugar campeonato <span aria-hidden="true">↗</span></a>
         <a class="button button-dark nav-cta" href="index.html">Portal del entrenador <span aria-hidden="true">↗</span></a>
       </nav>
     </div>
@@ -71,6 +75,25 @@
         <span>FORMACIÓN CON PROPÓSITO</span>
         <span class="bottom-divider"></span>
         <span>DESDE EL PRIMER PASE HASTA EL ÚLTIMO SILBATAZO</span>
+      </div>
+    </section>
+
+    <section class="container auth-dashboard public-account-dashboard" data-signed-in hidden aria-labelledby="account-dashboard-title">
+      <div class="account-dashboard-heading">
+        <div><p class="eyebrow">TU ESPACIO DE JUEGO</p><h2 id="account-dashboard-title">Tu campeonato</h2></div>
+        <div class="account-dashboard-actions"><a class="auth-open-link" href="mundial.html">Continuar jugando ↗</a><button class="auth-sign-out" type="button" data-sign-out>Cerrar sesión</button></div>
+      </div>
+      <p class="account-welcome">Hola, <strong data-account-name></strong>. Tus datos solo son visibles para ti.</p>
+      <p class="auth-sync-status" data-sync-status role="status" aria-live="polite">Conectando con Firestore…</p>
+      <div class="auth-dashboard-stats">
+        <div><b data-stat="matchesPlayed">0</b><span>PARTIDOS</span></div>
+        <div><b data-stat="matchesWon">0</b><span>VICTORIAS</span></div>
+        <div><b data-stat="goalsScored">0</b><span>GOLES</span></div>
+        <div><b data-stat="championshipsWon">0</b><span>CAMPEONATOS</span></div>
+      </div>
+      <div class="auth-dashboard-lists">
+        <div><h3>Partidos recientes</h3><ul class="auth-live-list" id="recentMatches"><li>Tus partidos aparecerán aquí.</li></ul></div>
+        <div><h3>Goleadores recientes</h3><ul class="auth-live-list" id="recentScorers"><li>Los goles registrados aparecerán aquí.</li></ul></div>
       </div>
     </section>
 
@@ -210,5 +233,29 @@
     </div>
     <div class="container footer-bottom"><span>© <span id="current-year"></span> Cantera Escuela de Fútbol</span><span>Hecho para crecer, dentro y fuera de la cancha.</span><a href="index.html">Portal del entrenador ↗</a></div>
   </footer>
+
+  <dialog class="auth-dialog" id="authDialog" aria-labelledby="authTitle">
+    <button class="auth-close" id="authClose" type="button" aria-label="Cerrar">×</button>
+    <h2 id="authTitle">Crea tu cuenta</h2>
+    <p id="authDescription">Regístrate para guardar tus partidos y estadísticas.</p>
+    <form class="auth-form" id="authForm">
+      <label id="displayNameField">Nombre
+        <input id="authName" name="name" type="text" autocomplete="name" minlength="2" maxlength="60" required>
+      </label>
+      <label>Correo electrónico
+        <input id="authEmail" name="email" type="email" autocomplete="email" required>
+      </label>
+      <label>Contraseña
+        <input id="authPassword" name="password" type="password" autocomplete="new-password" minlength="8" required>
+      </label>
+      <label id="confirmPasswordField">Confirma tu contraseña
+        <input id="authConfirmPassword" name="confirmPassword" type="password" autocomplete="new-password" minlength="8" required>
+      </label>
+      <button id="authSubmitButton" type="submit">Crear cuenta</button>
+      <p class="auth-message" id="authMessage" role="status" aria-live="polite"></p>
+      <button class="auth-mode-toggle" id="authModeButton" type="button">¿Ya tienes una cuenta? Inicia sesión</button>
+    </form>
+  </dialog>
+  <script type="module" src="firebase.js"></script>
 </body>
 </html>
